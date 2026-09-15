@@ -1,0 +1,67 @@
+spring:
+  ai:
+    ollama:
+      chat:
+        model: qwen3:0.6b #glm-5.3:cloud
+      init:
+        pull-model-strategy: when_missing
+        max-retries: 3
+      embedding:
+        model: qwen3-embedding:0.6b
+    openai:
+      api-key: ${OPENAI_KEY}
+      chat:
+        model: gpt-4.1
+        max-tokens: 1000
+        temperature: 0.1
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+    vectorstore:
+      pgvector:
+        # WAZNE: wymiar musi odpowiadac modelowi embeddingow.
+        # nomic-embed-text  -> 768
+        # bge-m3            -> 1024
+        # text-embedding-3-small (OpenAI) -> 1536
+        initialize-schema: true
+        # dimensions: ${LLM_EMBED_DIM:768}
+        # index-type: HNSW
+        # distance-type: COSINE_DISTANCE
+    model:
+      moderation: none # wylacza OpenAiModerationModel - uzywamy wlasnego beana (OllamaModerationModel)
+    tools:
+      limits:
+        max-calls-per-tool:
+          DateTimeTool: 3
+        max-total-tool-calls: 10
+        on-limit-exceeded: return_error_response
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers-config.json
+#        streamable-http:
+#          connections:
+#            web:
+#              url: http://localhost:8090
+#              endpoint: /mcp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/training
+    username: admin
+    password: admin
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+    pl.training.springai.advisor: DEBUG
+
+server:
+  port: 8600
+app:
+  moderation:
+    model: speakleash/bielik-11b-v2.3-instruct:Q4_K_M # llama-guard3:8b

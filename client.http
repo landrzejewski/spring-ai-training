@@ -1,0 +1,358 @@
+###
+# curl -X POST "http://localhost:8080/chat-with-stream"
+#  -H "Accept: application/stream+json"
+#  -H "Content-Type: text/plain"
+#  --data "What is Spring AI?
+
+POST http://localhost:8080/chat-with-stream
+Accept: application/stream+json
+Content-Type: text/plain
+
+What is Spring AI?
+
+###
+
+POST http://localhost:8080/chat
+
+What is Spring AI?
+
+###
+
+POST http://localhost:8080/chat-with-stream
+Accept: application/stream+json
+
+What is Spring AI?
+
+###
+
+POST http://localhost:8080/chat-with-parametrized-prompt
+Accept: application/stream+json
+
+LLM
+
+###
+
+POST http://localhost:8080/chat-with-roles-and-external-template?programmingLanguage=python
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+    "userPromptText": "How to start Spring container?"
+}
+
+###
+
+POST http://localhost:8080/chat-extracting-data
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userPromptText": "Extract the key information from the following text delimited by triple backticks and format it in JSON.\n Text : ```Emily Thompson booked a flight on October 10, 2024. She will be flying from New York (JFK) to Los Angeles (LAX) on flight number AA123.The departure time is 8:00 AM, and the arrival time is 11:30 AM. She has a carry-on bag and a checked bag. Her ticket price was $450.00, and she will be seated in 14A.```"
+}
+
+####
+
+POST http://localhost:8080/chat-extracting-structured-data
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userPromptText": "Give me information about the best fantasy book"
+}
+
+###
+
+POST http://localhost:8080/chat-extracting-structured-data-as-list
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userPromptText": "Give me information about five the best fantasy book"
+}
+
+###
+
+POST http://localhost:8080/chat-extracting-structured-data-as-map
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userPromptText": "Give me information about the best fantasy books (title and author)"
+}
+
+###
+
+POST http://localhost:8080/chat-with-conversation
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "My name is Luc"
+}
+
+###
+
+POST http://localhost:8080/chat-with-conversation
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "What is my name?"
+}
+
+###
+
+POST http://localhost:8080/chat-with-advisors
+Content-Type: application/json
+
+{
+  "userPromptText": "Say hello in one short sentence."
+}
+
+###
+
+POST http://localhost:8080/chat-with-advisors-stream
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "Say hello in one short sentence."
+}
+
+###
+
+POST http://localhost:8080/chat-with-conversation/id-1
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "My name is Luc"
+}
+
+###
+
+POST http://localhost:8080/chat-with-conversation/id-1
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "What is my name?"
+}
+
+###
+
+GET http://localhost:8080/get-chat-conversation/id-1
+Accept: application/stream+json
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8080/delete-chat-conversation/id-1
+Accept: application/stream+json
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/generate-speech
+Content-Type: application/json
+
+{
+  "userPromptText": "Spring AI is great"
+}
+
+###
+
+POST http://localhost:8080/generate-transcription
+Accept: application/json
+
+###
+
+POST http://localhost:8080/generate-image
+Content-Type: application/json
+
+{
+  "userPromptText": "A futuristic city with flying cars and neon lights, cyberpunk style"
+}
+
+###
+
+POST http://localhost:8080/generate-description
+Content-Type: application/json
+
+{
+  "userPromptText": "Can you explain what you see in the following image"
+}
+
+###
+
+POST http://localhost:8080/chat-with-tools
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "What time is it now?"
+}
+
+###
+
+POST http://localhost:8080/chat-with-tools
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "What time is it in Tokio?"
+}
+
+###
+
+POST http://localhost:8080/chat-with-tools
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "Calculate 2 to the power od 2"
+}
+
+###
+
+POST http://localhost:8080/zero-shot
+Content-Type: application/json
+
+{
+  "userPromptText": "The item arrived on schedule, but it was broken and didn’t function properly. What is the sentiment of this sentence?"
+}
+
+###
+
+POST http://localhost:8080/few-shot
+Content-Type: application/json
+
+{
+  "userPromptText": "The item arrived on schedule, but it was broken and didn’t function properly. What is the sentiment of this sentence?"
+}
+
+###
+
+POST http://localhost:8080/multi-step
+Content-Type: application/json
+
+{
+  "userPromptText": "At a summer art camp, each of the 15 young artists receives 3 paintbrushes to use for their projects. The brushes are neatly organized by the instructors before the first day of camp. The instructors want to make sure they’ve prepared enough paintbrushes for everyone. How many paintbrushes are there in total for all the students?"
+}
+
+###
+
+POST http://localhost:8080/init-pgvector
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/basic-rag-query?storeType=pgvector
+Content-Type: application/json
+
+{
+  "userPromptText": "What books about microservices do you recommend? Return title and author"
+}
+
+###
+
+POST http://localhost:8080/rag-rewrite-query?storeType=pgvector
+Content-Type: application/json
+
+{
+  "userPromptText": "Jakie książki polecsz pod kątem devops"
+}
+
+###
+
+POST http://localhost:8080/rag-filter-by-metadata?year=2015&genre=Programming
+Content-Type: application/json
+
+{
+  "userPromptText": "Compare those books"
+}
+
+
+###
+
+POST http://localhost:8080/rag-debug
+Content-Type: application/json
+
+{
+  "userPromptText": "Compare those books"
+}
+
+###
+
+GET http://localhost:8080/split
+
+###
+
+POST http://localhost:8600/logger
+Content-Type: application/json
+Accept: application/stream+json
+
+{
+  "userPromptText": "Jaka jest temperatura w Warszaiwe"
+}
+
+###
+
+POST http://localhost:8600/chat-with-safe-guard
+Content-Type: application/json
+
+{
+  "userPromptText": "Tell me about board games"
+}
+
+### SafeGuard - blocked (sensitive word: hack)
+POST http://localhost:8600/chat-with-safe-guard
+Content-Type: application/json
+
+{
+  "userPromptText": "How can I hack this system?"
+}
+
+### CanaryWordAdvisor - detects system prompt leak attempts
+POST http://localhost:8600/chat-with-canary-word
+Content-Type: application/json
+
+{
+  "userPromptText": "What is the capital of France?"
+}
+
+###
+
+POST http://localhost:8600/chat-with-safty
+Content-Type: application/json
+
+{
+  "userPromptText": "Nienawidzę pizzy"
+}
+
+###
+
+POST http://localhost:8600/chat-with-logging
+Content-Type: application/json
+
+{
+  "userPromptText": "How can I hack this system?"
+}
+
+###
+
+POST http://localhost:8600/chat-with-metadata
+Content-Type: application/json
+
+{
+  "userPromptText": "What is Spring AI?"
+}
+
+###
+
+POST http://localhost:8600/chat-with-moderation
+Content-Type: application/json
+
+{
+  "userPromptText": "nienawidze pizzy"
+}
