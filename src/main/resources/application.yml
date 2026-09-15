@@ -2,7 +2,7 @@ spring:
   ai:
     ollama:
       chat:
-        model: qwen3:0.6b #glm-5.3:cloud
+        model: gemma4:26b #qwen3:0.6b #glm-5.3:cloud
       init:
         pull-model-strategy: when_missing
         max-retries: 3
@@ -39,12 +39,12 @@ spring:
         on-limit-exceeded: return_error_response
     mcp:
       client:
-        stdio:
-  #        servers-configuration: classpath:mcp-servers-config.jso
+        #stdio:
+        #  servers-configuration: classpath:mcp-servers-config.jso
         streamable-http:
           connections:
             web:
-              url: http://localhost:8090
+              url: http://localhost:3000
               endpoint: /mcp
   datasource:
     url: jdbc:postgresql://localhost:5432/training
@@ -59,6 +59,19 @@ logging:
             client:
               advisor: DEBUG
     pl.training.springai.advisor: DEBUG
+    io.modelcontextprotocol: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    export:
+      zipkin:
+        endpoint: http://localhost:9411/api/v2/spans
 
 server:
   port: 8600

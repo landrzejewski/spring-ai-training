@@ -368,5 +368,5 @@ Accept: application/stream+json
 Content-Type: application/json
 
 {
-  "userPromptText": "Ile dni zostało do 2026-12-24"
+  "userPromptText": "Kto wygrał US open 2025? Poszukaj w sieci"
 }
