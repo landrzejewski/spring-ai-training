@@ -356,3 +356,17 @@ Content-Type: application/json
 {
   "userPromptText": "nienawidze pizzy"
 }
+
+###
+
+POST http://localhost:8600/mcp-tools
+
+###
+
+POST http://localhost:8600/mcp-client
+Accept: application/stream+json
+Content-Type: application/json
+
+{
+  "userPromptText": "Ile dni zostało do 2026-12-24"
+}

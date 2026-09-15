@@ -39,6 +39,8 @@ spring:
       server:
         stdio: false
         protocol: STREAMABLE
+        streamable-http:
+          mcp-endpoint: /mcp
 server:
   port: 8090
 logging:

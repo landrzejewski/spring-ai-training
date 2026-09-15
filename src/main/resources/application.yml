@@ -40,12 +40,12 @@ spring:
     mcp:
       client:
         stdio:
-          servers-configuration: classpath:mcp-servers-config.json
-#        streamable-http:
-#          connections:
-#            web:
-#              url: http://localhost:8090
-#              endpoint: /mcp
+  #        servers-configuration: classpath:mcp-servers-config.jso
+        streamable-http:
+          connections:
+            web:
+              url: http://localhost:8090
+              endpoint: /mcp
   datasource:
     url: jdbc:postgresql://localhost:5432/training
     username: admin

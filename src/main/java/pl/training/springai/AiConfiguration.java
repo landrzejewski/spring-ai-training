@@ -25,7 +25,6 @@ import java.util.List;
 @Configuration
 public class AiConfiguration {
 
-    @Primary
     @Bean
     public ChatClient openAiChatClient(OpenAiChatModel chatModel, ChatMemory chatMemory) {
         return ChatClient.builder(chatModel)
@@ -37,6 +36,7 @@ public class AiConfiguration {
                 .build();
     }
 
+    @Primary
     @Bean
     public ChatClient ollamaChatClient(OllamaChatModel chatModel, ChatMemory chatMemory) {
         return ChatClient.builder(chatModel)

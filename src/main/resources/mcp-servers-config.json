@@ -1,13 +1,8 @@
 {
   "mcpServers": {
     "mcp-server": {
-      "command": "java",
-      "args": [
-        "-jar",
-        "./mcp-server/target/mcp-server.jar"
-      ],
-      "env": {
-      }
+      "type": "http",
+      "url": "http://localhost:8090/mcp"
     }
   }
 }
